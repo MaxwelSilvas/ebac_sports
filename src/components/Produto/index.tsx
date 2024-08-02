@@ -6,7 +6,7 @@ import { Produto as ProdutoType } from '../../App'
 import { addToCart, setFavorite } from '../../redux/cart/slice'
 import {
   selectIsFavorite,
-  selectIsInCart,
+  selectIsInCart
 } from '../../redux/cart/cart.selector'
 import { RootReducer } from '../../redux/store'
 
@@ -16,7 +16,7 @@ type Props = {
 
 export const paraReal = (valor: number) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
-    valor,
+    valor
   )
 
 const ProdutoComponent = ({ produto }: Props) => {
@@ -25,10 +25,10 @@ const ProdutoComponent = ({ produto }: Props) => {
   const adicionar = () => dispatch(addToCart(produto))
   const favor = () => dispatch(setFavorite(produto.id))
   const isFavorite = useSelector((root: RootReducer) =>
-    selectIsFavorite(root.cart.favorites, produto.id),
+    selectIsFavorite(root.cart.favorites, produto.id)
   )
   const inCart = useSelector((root: RootReducer) =>
-    selectIsInCart(root.cart.itemsToBuy, produto.id),
+    selectIsInCart(root.cart.itemsToBuy, produto.id)
   )
 
   return (
